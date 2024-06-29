@@ -2,7 +2,7 @@
 
 DROP DATABASE IF EXISTS `Bradford_Council`;
 CREATE DATABASE `Bradford_Council`;
-USE `Bradford_Council`;
+USE `Bradford_Council`; 
 
 
 CREATE TABLE workers_demographics (
