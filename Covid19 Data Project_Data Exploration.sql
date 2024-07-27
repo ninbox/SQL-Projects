@@ -29,6 +29,9 @@ WHERE continent IS NOT NULL
 ORDER BY 1, 2
 ;
 
+
+
+
 -- total cases vs total deaths = Percentage Death
 -- it return the likelihood of one dying after contracting covid19 taking UK and US as case study
 
@@ -46,6 +49,9 @@ WHERE location LIKE '%United Kingdom%'
 ORDER BY 
     location, 
     date;
+
+
+
 
 
 	-- looking for propability of dying after contracting covid in the US
@@ -76,6 +82,9 @@ FROM ProjectPortfolio..CovidDeathsData
 ORDER BY 1, 2
 ;
 
+
+
+
 -- looking at country with highest infection rate compared to population
 
 SELECT
@@ -90,6 +99,8 @@ ORDER BY HighestInfectionCount DESC
 ;
 
 
+
+
 -- DRILL DOWN TO CONTINENTS
 -- Showing countries with highes death count
 
@@ -101,6 +112,9 @@ WHERE continent IS NOT NULL
 GROUP BY location
 ORDER BY TotalDeathsCount DESC
 ;
+
+
+
 
 --removing non contient values 
 
@@ -127,6 +141,9 @@ GROUP BY continent
 ORDER BY TotalDeathsCount DESC
 ;
 
+
+
+
 --LETS EXPLORE THE GLOBAL NUMBER
 -- looking at global total number of recent deaths vs new cases
 
@@ -139,6 +156,9 @@ FROM ProjectPortfolio..CovidDeathsData
 WHERE continent IS NOT NULL
 ORDER BY 1, 2
 ;
+
+
+
 
 -- to avoid divisible error in the future we add logic to control the new data
 
@@ -155,6 +175,8 @@ WHERE continent IS NOT NULL
 GROUP BY date
 ORDER BY  DeathPercentage
 ;
+
+
 
 
 -- FROM COVID VACCINATION TABLE 
@@ -207,6 +229,9 @@ FROM PopvsVac
 ;
 
 
+
+
+
 -- looking for percentage vacinted for individual countries let take 'Andorra' as case study
 
 WITH PopvsVac (
@@ -233,6 +258,9 @@ WHERE cd.continent IS NOT NULL
 SELECT *, (rollingPeopleVaccinated / Population) * 100 AS PercentagePopulationVac 
 FROM PopvsVac
 ;
+
+
+
 
 
 --rename the table for more advance calculation
@@ -270,7 +298,12 @@ SELECT
 	FROM PeopleVaccinated_CTE
 ORDER BY 
     location, 
-    date;
+    date
+;
+
+
+
+
 
 	-- to avoid Null/zero divisible error for feature  data update 
 --CREATE CTE3
@@ -303,7 +336,9 @@ SELECT
     END AS percentageVaccinated
 FROM PopvsVac_CTE
 WHERE population > 0
-ORDER BY location, date;
+ORDER BY location, date
+;
+
 
 
 
@@ -342,6 +377,8 @@ FROM PercentagePopulationVaccinated
 ;
 
 
+
+
 -- LETS CREATE FOR FOR VISUALISATIONS 
 --creating view for percentage of peeople vaccinated by countries 
 DROP VIEW dbo.PercentagePopulationVaccinated_View; 
@@ -365,6 +402,9 @@ SELECT *
 FROM dbo.PercentagePopulationVaccinated_View
 ; 
 
+
+
+
 	
 -- creating view for new total deaths counts due to new cases by countries 
 
@@ -377,7 +417,9 @@ FROM ProjectPortfolio..CovidDeathsData
 WHERE continent IS NULL AND location NOT IN ('High income', 'Low income', -- filter non countries from the list
 		'Upper middle income', 'Lower middle income', 'World')
 GROUP BY location
---ORDER BY ContinentTotalDeathsCount DESC
+;
+
+
 
 SELECT *
 FROM.ContinentTotalDeathsCount
