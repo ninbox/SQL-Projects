@@ -10,9 +10,11 @@
 	;
 
 	--split the large dataset into CovidDeaths dataset and Covid Vaccination dataset
-	--the link for the data set [https://ourworldindata.org/covid-deaths]
-	--covid vaccinations dataset [https://tinyurl.com/5yryh9e8]
-	--covid deaths dataset [https://tinyurl.com/nhhz63rn]
+	--Download the the dataset [https://ourworldindata.org/covid-deaths]
+	--Download the dataset of covid vaccinations dataset [https://tinyurl.com/5yryh9e8]
+	--Download dataset for covid deaths dataset [https://tinyurl.com/nhhz63rn]
+
+	
 	-- from CovidDeaths dataset lets return columns of interest
 
 SELECT
@@ -363,8 +365,6 @@ SELECT *
 FROM dbo.PercentagePopulationVaccinated_View
 ; 
 
-
-		
 	
 -- creating view for new total deaths counts due to new cases by countries 
 
@@ -381,6 +381,8 @@ GROUP BY location
 
 SELECT *
 FROM.ContinentTotalDeathsCount
+
+--Checkout my Tableau projects for data visualisation of the analysis.
 
 
 
