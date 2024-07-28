@@ -1,6 +1,12 @@
 
 --DATA EXPLORATION OF COVID19 DATA SET
 
+/*
+Covid 19 Data Exploration Project
+
+Skills used: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
+
+*/
 	SELECT *
 	FROM ProjectPortfolio..CovidDeathsData
 	;
